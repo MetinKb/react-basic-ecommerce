@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import useFetch from './useFetch'
+import apiUrl from 'data/apiUrl'
 
 const usePagination = (category, page = 1, itemsPerPage = 10) => {
     const [allProducts, setAllProducts] = useState([])
@@ -8,7 +9,7 @@ const usePagination = (category, page = 1, itemsPerPage = 10) => {
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(null)
 
-    const { data, loading: fetchLoading, error: fetchError } = useFetch(`http://localhost:3001/api/v1/products/${category}`)
+    const { data, loading: fetchLoading, error: fetchError } = useFetch(`${apiUrl}${category}`)
 
     useEffect(() => {
         if (data) {
